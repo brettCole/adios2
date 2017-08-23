@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
     if user.save
       render json: { token: Auth.createToken(user)}
     else
-      render json: { errors: users.errors.full_messages }, status: 500
+      render json: { errors: user.errors.full_messages }, status: 500
     end
   end
 
