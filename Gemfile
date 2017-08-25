@@ -20,6 +20,8 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 # Use JWT for authentication token
 gem 'jwt'
+# IRB alternative
+gem 'pry'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

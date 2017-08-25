@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-require "rails"
+require "rails/all"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -26,5 +26,11 @@ module AdiosAppApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+  end
+end
+
+module JwtApp
+  class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
