@@ -22,6 +22,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 # IRB alternative
 gem 'pry'
+# OmniAuth for third-party signin
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+# Figaro create ENV variables
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
