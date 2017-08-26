@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20170823012133) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "provider"
+    t.string   "uid",             limit: 8
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
 end
