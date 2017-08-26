@@ -6,14 +6,23 @@ class Register extends Component {
   constructor(props) {
   super(props);
 
-  this.handleSubmit = this.handleSubmit.bind(this)
+  this.state = {
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
   }
 
+  this.handleSubmit = this.handleSubmit.bind(this)
+  } 
+
   handleSubmit(event) {
+    event.preventDefault();
     const newRequest = new Request('http://localhost:3001/api/users', {
       method: 'POST',
       mode: 'cors',
       redirect: 'follow',
+      credentials: 'same-origin',
       headers: new Headers({
         'Content-Type': 'application/json'
       })
@@ -45,9 +54,9 @@ class Register extends Component {
           </Col>
         </FormGroup>
         <FormGroup className='justify-content-left pl-2' row>
-          <Label for='password' name='password_confirmation' sm={2}>Re-enter Password</Label>
+          <Label for='password_confirmation' name='password_confirmation' sm={2}>Re-enter Password</Label>
           <Col sm={8}>
-            <Input type='password' name='password_confirmation' placeholder='*****' />
+            <Input type='password_confirmation' name='password_confirmation' placeholder='*****' />
           </Col>
         </FormGroup>
         <FormGroup className='justify-content-center pb-2' row>
