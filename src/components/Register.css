@@ -1,3 +1,19 @@
 .rounded {
   background-color: whitesmoke;
 }
+
+.homepage_background {
+  height: 100vh;
+  background: url('../images/ishan-seefromthesky-118523.jpg')
+              no-repeat center center;
+  background-size: cover;
+}
+
+.title {
+  color: white;
+  display: inline;
+}
+
+.nav_link {
+  color: white;
+}
