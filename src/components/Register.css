@@ -9,6 +9,20 @@
   background-size: cover;
 }
 
+.homepage_background_2 {
+  height: 100vh;
+  background: url('../images/toa-heftiba-189187.jpg')
+              no-repeat center center;
+  background-size: cover;
+}
+
+.homepage_background_3 {
+  height: 100vh;
+  background: url('../images/kalen-emsley-94129.jpg')
+              no-repeat center center;
+  background-size: cover;
+}
+
 .title {
   color: white;
   display: inline;
@@ -16,4 +30,8 @@
 
 .nav_link {
   color: white;
+}
+
+.display-height {
+  height: 100vh;
 }
