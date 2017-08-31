@@ -23,7 +23,6 @@ class Navigation extends Component {
         <Navbar className='rounded' color='faded' light>
           <NavbarToggler onClick={this.toggleNavbar} />
           <Collapse className='navbar-toggleable-md' isOpen={!this.state.collapsed}>
-            <NavbarBrand href='/'>reactstrap</NavbarBrand>
             <Nav navbar>
               <NavItem>
                 <NavLink href='/components/Signup'>Signup</NavLink>
