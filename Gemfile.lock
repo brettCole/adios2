@@ -90,6 +90,10 @@ GEM
       multi_json (~> 1.3)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.3.1)
+    omniauth-homeaway (0.2.0)
+      oauth2 (~> 1.3.0)
+      omniauth (~> 1.6)
+      omniauth-oauth2 (<= 1.4)
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -163,6 +167,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-homeaway
   pg (~> 0.18)
   pry
   puma (~> 3.0)

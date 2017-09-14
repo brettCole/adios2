@@ -8,4 +8,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # Facebook
   provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
            :scope => ['name', 'first_name', 'picture', 'email']
+
+  # Homeaway
+  provider :homeaway, ENV['HOMEAWAY_CLIENT_ID'], ENV['HOMEAWAY_CLIENT_SECRET']
 end
