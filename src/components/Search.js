@@ -29,25 +29,36 @@ class Search extends React.Component {
      headers: {
       'Authorization': authVal,
       }
-     }).then(response => response.json())
+     }).then(response => response.json()) 
+      .then(data => {
+        let test = data;
+        console.log(test);
+        let type = data.token_type;
+        console.log(type);
+        let access_token = data.access_token;
+        console.log(access_token);
+      })
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    // const url = 'https://ws.homeaway.com/oauth/token';
-    // fetch(url, {
-    //   method: 'POST',
-    //   Authorization: `Basic ${encoded_user}:${encoded_secret}`
-    // }).then(function(response) {
-    //   console.log(response);
-    // });
+    const url = 'https://ws.homeaway.com/public/search';
+    fetch(url, {
+      headers: {
+        'Authorization': 'Bearer ZjA3OTEyNjgtODRiMy00ZTk0LWI4YTgtOTVkMmY2NzYzM2Zh'
+      }
+    }).then(response => response.json())
+    .then(data => {
+      // let testing = da
+      console.log(data)
+    })
   }
 
   render() {
     return(
-      <Form onSubmit={this.handleSubmit} className='border border-secondary rounded d-flex justify-content-start aligm-items-start col-lg-4 col-md-6 col-sm-6'>
+      <Form onSubmit={this.handleSubmit} className='border border-secondary rounded d-flex-column justify-content-start aligm-items-start col-lg-4 col-md-6 col-sm-6'>
         <FormGroup className='mt-4'>
-          <Input size='lg' type='search' name='search' placeholder='Where do you want to go?' />
+          <Input size='lg' type='search' name='q' placeholder='Where do you want to go?' />
         </FormGroup>
         <FormGroup>
           <Input size='sm' type='date' name='date_check_in' placeholder='Check-In' />
