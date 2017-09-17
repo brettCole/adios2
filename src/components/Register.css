@@ -18,7 +18,7 @@
 
 .homepage_background_3 {
   height: 100vh;
-  background: url('../images/kalen-emsley-94129.jpg')
+  background: url('../images/jonathan-klok-379720.jpg')
               no-repeat center center;
   background-size: cover;
 }
@@ -34,4 +34,8 @@
 
 .display-height {
   height: 100vh;
+}
+
+.search-height {
+  height: 50vh;
 }

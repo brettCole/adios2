@@ -26,7 +26,7 @@ class Navigation extends Component {
             {!isLoggedIn ? (
               <NavLink className='d-inline text-bottom' href='/components/Signin'>Login</NavLink>
             ) : (
-              <UserLinkOptions nav />
+              <UserLinkOptions  />
             )}
           </NavItem>
         </Nav>

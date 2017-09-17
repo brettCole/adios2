@@ -56,43 +56,21 @@ class Search extends React.Component {
 
   render() {
     return(
-      <Form onSubmit={this.handleSubmit} className='border border-secondary rounded d-flex-column justify-content-start aligm-items-start col-lg-4 col-md-6 col-sm-6'>
-        <FormGroup className='mt-4'>
-          <Input size='lg' type='search' name='q' placeholder='Where do you want to go?' />
+      <Form onSubmit={this.handleSubmit} className='rounded d-flex justify-content-around align-items-end ml-auto mr-auto w-75'>
+        <Input className='mb-3 ml-2 w-25' type='search' name='q' placeholder='Where do you want to go?' />
+        <FormGroup>
+          <Label for='date_check_in'>Check In</Label>
+          <Input type='date' name='date_check_in' value='new Date()' />
         </FormGroup>
         <FormGroup>
-          <Input size='sm' type='date' name='date_check_in' placeholder='Check-In' />
-          <Input size='sm' type='date' name='date_check_out' placeholder='Check-Out' />
+          <Label for='date_check_out'>Check Out</Label>
+          <Input type='date' name='date_check_out' placeholder='Check-Out' />
         </FormGroup>
         <FormGroup>
-          <Label className='mb-0 align-self-start' name='guests'># of Guests</Label>
-          <Input type='select' name='guests'>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-          </Input>
+          <Label>Guests</Label>
+          <Input type='number' name='guests' />
         </FormGroup>
-        <FormGroup>
-          <Label className='mb-0 align-self-start' name='guests'># of Rooms</Label>
-          <Input type='select' name='rooms'>
-            <option>1</option>
-            <option>2</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label className='mb-0 align-self-start' for='pets' check>
-            <Input className='mr-3' type='checkbox' name='pets' />
-            Pets
-          </Label>
-        </FormGroup>
-        <Button className='mb-4'>Let's Get Away</Button>
+        <Button className='mb-3 mr-2'>Search</Button>
       </Form>    
     )
   }
