@@ -11,7 +11,7 @@
 
 .homepage_background_2 {
   height: 100vh;
-  background: url('../images/toa-heftiba-189187.jpg')
+  background: url('../images/glenn-carstens-peters-190592.jpg')
               no-repeat center center;
   background-size: cover;
 }
@@ -37,5 +37,13 @@
 }
 
 .search-height {
-  height: 50vh;
+  height: 34.375em;
+}
+
+.shadows {
+  text-shadow: 0.2em;
+}
+
+.checklist-height {
+  height: 15em; 
 }

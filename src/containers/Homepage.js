@@ -1,15 +1,19 @@
 import React from 'react';
-import { Container, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Navigation from './Navigation'
 import Search from '../components/Search'
+import CheckListLink from '../components/CheckListLink'
 require('../components/Register.css');
 
 const Homepage = () => {
   return(
     <Container className='w-100 display-height p-0'>
       <Navigation />
-      <Container className='d-flex align-items-center w-100 search-height homepage_background_3'>
+      <Container className='d-flex align-items-center w-100 search-height homepage_background_3 p-0'>
         <Search />
+      </Container>
+      <Container className='w-100 p-0'>
+        <CheckListLink />
       </Container>
     </Container>
   )
