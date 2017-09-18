@@ -47,3 +47,20 @@
 .checklist-height {
   height: 15em; 
 }
+
+.flipkey-height {
+  height: 9.375em;
+}
+
+.footer-email {
+  height: 3em;
+}
+
+.vertical {
+  border-left: 1px solid #000;
+  height: 9.375em;
+}
+
+.footer-background {
+  background-color: lightgrey;
+}

@@ -5,6 +5,8 @@ import './App.css';
 import Homepage from './containers/Homepage'
 // import Navigation from './containers/Navigation'
 // import CheckListLink from './components/CheckListLink'
+// import FlipKey from './components/Flipkey'
+// import Footer from './components/Footer'
 
 
 

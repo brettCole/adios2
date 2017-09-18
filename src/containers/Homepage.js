@@ -3,6 +3,8 @@ import { Container } from 'reactstrap';
 import Navigation from './Navigation'
 import Search from '../components/Search'
 import CheckListLink from '../components/CheckListLink'
+import Flipkey from '../components/Flipkey'
+import Footer from '../components/Footer'
 require('../components/Register.css');
 
 const Homepage = () => {
@@ -15,6 +17,8 @@ const Homepage = () => {
       <Container className='w-100 p-0'>
         <CheckListLink />
       </Container>
+      <Flipkey />
+      <Footer />
     </Container>
   )
 }
