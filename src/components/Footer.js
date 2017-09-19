@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { Container, InputGroup, InputGroupAddon, Input } from 'reactstrap';
 require('../components/Register.css');
 
 class Footer extends React.Component {
