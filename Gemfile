@@ -18,8 +18,12 @@ gem 'puma', '~> 3.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
 # Use JWT for authentication token
 gem 'jwt'
+# Rails-API authentication based on JWT
+gem 'knock'
+
 # IRB alternative
 gem 'pry'
 # OmniAuth for third-party signin
@@ -27,8 +31,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-homeaway'
-# Figaro create ENV variables
-gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
