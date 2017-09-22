@@ -1,8 +1,6 @@
-require 'Auth'
-
 class Api::V1::UsersController < ApplicationController
 
-  def register
+  def create
     user = User.new(user_params)
     if user.valid? && user.save
       render json: { token: Auth.create_Token({ id: user.id }) }
