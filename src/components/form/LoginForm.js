@@ -23,18 +23,14 @@ class LoginForm extends Component {
   onFormSubmit(e) {
     const url = 'http://localhost:3001/user_token';
     const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
-    const email = this.state.email;
-    const password = this.state.password;
     e.preventDefault();
-    console.log(data);
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify({
-        auth: {
-          email: this.state.email,
-          password: this.state.password
-        }
-      })
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: data
     })
     .then(response => response.json())
     .then(data => console.log(data));
