@@ -10,48 +10,59 @@ class LoginForm extends Component {
       email: '',
       password: ''
     }
-
-    this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({
-      email: event.target.value,
-      password: event.target.value
-    })
-  }
+  handleEmailChange(e) {
+    this.setState({ email: e.target.value });
+  };
 
-  onFormSubmit(event) {
-    event.preventDefault();
-    fetch('http://localhost:3001/user_token', {
+  handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  };
+
+  onFormSubmit(e) {
+    const url = 'http://localhost:3001/user_token';
+    const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
+    const email = this.state.email;
+    const password = this.state.password;
+    e.preventDefault();
+    console.log(data);
+    fetch(url, {
       method: 'POST',
-      credentials: 'include',
-      'Content-Type': 'application/json',
-      body: {
-        'auth': {
-          'email': 'auth[email]',
-          'password': 'auth[password]'
+      body: JSON.stringify({
+        auth: {
+          email: this.state.email,
+          password: this.state.password
         }
-      }
+      })
     })
     .then(response => response.json())
     .then(data => console.log(data));
+
+    this.setState({
+      email: '',
+      password: ''
+    });
   }
 
   render() {
     return (
       <Container className='homepage_background_3 w-100 d-flex justify-content-center align-items-center display-height'>
-        <Form onSubmit={this.onFormSubmit} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'>
+        <Form onSubmit={this.onFormSubmit.bind(this)} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'>
           <Label className='font-weight-bold'>Please Login</Label>
           <FormGroup className='mb-2 d-flex flex-column'>
-            <Label onChange={this.handleChange} className='mb-0 align-self-start' for='username'>Email</Label>{' '}
-            <Input size='sm' type='email' name='auth[email]' />
-            <p>{this.state.email}</p>
+            <Label className='mb-0 align-self-start' for='username'>Email</Label>{' '}
+            <Input size='sm' type='email' name='email'
+              value = {this.state.email}
+              onChange = {this.handleEmailChange.bind(this)} 
+            />
           </FormGroup>
           <FormGroup className='mb-2 d-flex flex-column'>
-            <Label onChange={this.handleChange} className='mb-0 align-self-start' for='password'>Password</Label>{' '}
-            <Input size='sm' type='password' name='auth[password]' placeholder='*****' />
-            <p>{this.state.password}</p>
+            <Label className='mb-0 align-self-start' for='password'>Password</Label>{' '}
+            <Input size='sm' type='password' name='password' placeholder='*****'
+              value = {this.state.password}
+              onChange = {this.handlePasswordChange.bind(this)}
+            />
           </FormGroup>
           <Button className='mb-3 mt-2 w-50 align-self-center' color='info'>Confirm Identity</Button>
         </Form>
