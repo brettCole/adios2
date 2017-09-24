@@ -163,7 +163,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
-  jwt
   knock
   listen (~> 3.0.5)
   omniauth
@@ -180,4 +179,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.14.3
+   1.15.1

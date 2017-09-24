@@ -12,7 +12,7 @@ class Api::V1::SessionsController < ApplicationController
   private 
 
   def auth_params
-    params.require(:auth).permit(:email, :password)
+    permit(:email, :password)
   end
 
 end

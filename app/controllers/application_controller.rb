@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
   include Knock::Authenticable
 
+  undef_method: :current_user
+
   private
 
   def authenticate_v1_user

@@ -19,8 +19,6 @@ gem 'puma', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use JWT for authentication token
-gem 'jwt'
 # Rails-API authentication based on JWT
 gem 'knock'
 
