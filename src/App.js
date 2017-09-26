@@ -4,10 +4,10 @@ import {
   Route
 } from 'react-router-dom';
 import './App.css';
-// import SignupForm from './components/form/SignupForm'
+import SignupForm from './components/form/SignupForm'
 // import Search from './components/Search'
 // import Homepage from './containers/Homepage'
-import LoginForm from './components/form/LoginForm'
+// import LoginForm from './components/form/LoginForm'
 // import Navigation from './containers/Navigation'
 // import CheckListLink from './components/CheckListLink'
 // import FlipKey from './components/Flipkey'
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <LoginForm />
+          <SignupForm />
         </div>
       </Router>
     );

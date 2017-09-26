@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
 require ('../../components/Register.css');
 
 class LoginForm extends Component {
@@ -44,7 +45,9 @@ class LoginForm extends Component {
   render() {
     return (
       <Container className='homepage_background_3 w-100 d-flex justify-content-center align-items-center display-height'>
-        <Form onSubmit={this.onFormSubmit.bind(this)} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'>
+        <Form 
+          onSubmit={this.onFormSubmit.bind(this)} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'
+        >
           <Label className='font-weight-bold'>Please Login</Label>
           <FormGroup className='mb-2 d-flex flex-column'>
             <Label className='mb-0 align-self-start' for='username'>Email</Label>{' '}
@@ -61,6 +64,7 @@ class LoginForm extends Component {
             />
           </FormGroup>
           <Button className='mb-3 mt-2 w-50 align-self-center' color='info'>Confirm Identity</Button>
+          <p>New here please <Link to='/login'>Signup</Link>!</p>
         </Form>
       </Container>
     )
