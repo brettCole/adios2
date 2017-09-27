@@ -4,15 +4,16 @@ import {
   Route
 } from 'react-router-dom';
 import './App.css';
-import SignupForm from './components/form/SignupForm'
+// import SignupForm from './components/form/SignupForm'
 // import Search from './components/Search'
 // import Homepage from './containers/Homepage'
 // import LoginForm from './components/form/LoginForm'
 import Navigation from './containers/Navigation'
-import CreateCategory from './components/CreateCategory'
+// import CreateCategory from './components/CreateCategory'
 // import CheckListLink from './components/CheckListLink'
 // import FlipKey from './components/Flipkey'
 // import Footer from './components/Footer'
+import ChecklistContainer from './containers/ChecklistContainer'
 
 
 
@@ -23,7 +24,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navigation />
-          <CreateCategory />
+          <ChecklistContainer />
         </div>
       </Router>
     );
