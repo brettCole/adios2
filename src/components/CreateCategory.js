@@ -30,7 +30,9 @@ class CreateCategory extends Component {
   render() {
     return (
       <Container className='w-100 d-flex justify-content-center mt-3'>
-        <Button onClick={this.toggle} id='Popover1' className='w-25 d-flex justify-content-center align-items-center info' color='info'>
+        <Button id='Popover1' className='w-25 d-flex justify-content-center align-items-center info' color='info'
+          onClick={this.toggle}
+        >
           <EntypoPlus /><p className='mb-0 ml-2'>Create Category</p>
         </Button>
         <Popover placement='right center' 

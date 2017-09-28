@@ -7,11 +7,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 
-// const store = createStore(
-  // reducer(state, action),
+// const store = createStore(reducer, applyMiddleware(thunk)
   // window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  // window.__REDUX_DEVTOOLS_EXTENSION__()
-  // );
+  // window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   // <Provider store={store}>

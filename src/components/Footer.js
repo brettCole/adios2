@@ -23,8 +23,8 @@ class Footer extends React.Component {
           <div className='vertical'></div>
           <div className='align-self-center'>
             <p>acodercalledcole@gmail.com</p>
-            <p>LinkedIn</p>
-            <p>acodercalledcole.com</p>
+            <p><a href='https://www.linkedin.com/in/brett-cole-ba86b297/'>LinkedIn</a></p>
+            <a href='acodercalledcole.com'>acodercalledcole.com</a>
           </div>
         </div>
         <p className='mb-0'>&copy; 2017 Adíos.com, All Rights Reserved &#9760;</p>

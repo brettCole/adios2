@@ -11,45 +11,34 @@ class Search extends React.Component {
       date_check_in: '',
       date_check_out: '',
       guests: '',
-      rooms: '',
-      pet: ''
     }
-
   }
 
-  componentDidMount() {
-    const url = 'https://ws.homeaway.com/oauth/token';
-    const clientId = process.env.REACT_APP_HOMEAWAY_CLIENT_ID;
-    const clientSecret = process.env.REACT_APP_HOMEAWAY_CLIENT_SECRET;
-    const credentials = clientId + ':' + clientSecret;
-    let authVal = 'Basic ' + btoa(credentials);
+  handleQChange = (e) => {
+    this.setState({ q: e.target.value });
+  };
 
-    fetch(url, {
-     method: 'POST',
-     headers: {
-      'Authorization': authVal,
-      }
-     }).then(response => response.json()) 
-      .then(data => {
-        let test = data;
-        console.log(test);
-        let type = data.token_type;
-        console.log(type);
-        let access_token = data.access_token;
-        console.log(access_token);
-      })
-  }
+  handleCheckInChange = (e) => {
+    this.setState({ date_check_in: e.target.value });
+  };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleCheckOutChange = (e) => {
+    this.setState({ date_check_out: e.target.value });
+  };
+
+  handleGuestChange = (e) => {
+    this.setState({ guests: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
     const url = 'https://ws.homeaway.com/public/search';
     fetch(url, {
       headers: {
-        'Authorization': 'Bearer ZjA3OTEyNjgtODRiMy00ZTk0LWI4YTgtOTVkMmY2NzYzM2Zh'
+        'Authorization': `Bearer ${localStorage.access}`
       }
     }).then(response => response.json())
     .then(data => {
-      // let testing = da
       console.log(data)
     })
   }
@@ -57,18 +46,30 @@ class Search extends React.Component {
   render() {
     return(
       <Form onSubmit={this.handleSubmit} className='rounded d-flex justify-content-around align-items-end ml-auto mr-auto w-75'>
-        <Input className='mb-3 ml-2 w-25' type='search' name='q' placeholder='Where do you want to go?' />
+        <Input className='mb-3 ml-2 w-25' type='search' name='q' placeholder='Where do you want to go?'
+          value = {this.state.q}
+          onChange = {this.handleQChange} 
+        />
         <FormGroup>
           <Label for='date_check_in'>Check In</Label>
-          <Input type='date' name='date_check_in' value='new Date()' />
+          <Input type='date' name='date_check_in' value='new Date()'
+            value = {this.state.date_check_in} 
+            onChange = {this.handleCheckInChange}
+          />
         </FormGroup>
         <FormGroup>
           <Label for='date_check_out'>Check Out</Label>
-          <Input type='date' name='date_check_out' placeholder='Check-Out' />
+          <Input type='date' name='date_check_out' placeholder='Check-Out'
+            value = {this.state.date_check_out}
+            onChange = {this.handleCheckOutChange}
+          />
         </FormGroup>
         <FormGroup>
           <Label>Guests</Label>
-          <Input type='number' name='guests' />
+          <Input type='number' name='guests'
+            value = {this.state.guests}
+            onChange = {this.handleGuestChange}
+          />
         </FormGroup>
         <Button className='mb-3 mr-2'>Search</Button>
       </Form>    
