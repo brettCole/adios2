@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import { isLoggedIn } from '../../actions/LoggedIn'
+require ('isomorphic-fetch');
 require ('../../components/Register.css');
 
 class LoginForm extends Component {
@@ -13,19 +17,18 @@ class LoginForm extends Component {
     }
   }
 
-  handleEmailChange(e) {
-    this.setState({ email: e.target.value });
-  };
+  handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
 
-  handlePasswordChange(e) {
-    this.setState({ password: e.target.value });
-  };
+    this.setState({ [name]: value });
+  }
 
   onFormSubmit(e) {
-    const url = 'http://localhost:3001/user_token';
     const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
     e.preventDefault();
-    fetch(url, {
+    fetch('http://localhost:3001/user_token', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -34,7 +37,20 @@ class LoginForm extends Component {
       body: data
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+      localStorage.setItem('jwt', data.jwt)
+      const token = 'Bearer ' + localStorage.getItem('jwt');
+
+      return fetch('http://localhost:3001/api/v1/users/:id', {
+        method: 'GET',
+        headers: {
+          Authorization: token
+        }
+      }).then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+    });
 
     this.setState({
       email: '',
@@ -51,24 +67,34 @@ class LoginForm extends Component {
           <Label className='font-weight-bold'>Please Login</Label>
           <FormGroup className='mb-2 d-flex flex-column'>
             <Label className='mb-0 align-self-start' for='username'>Email</Label>{' '}
-            <Input size='sm' type='email' name='email'
+            <Input size='sm' 
+              type='email' 
+              name='email'
               value = {this.state.email}
-              onChange = {this.handleEmailChange.bind(this)} 
+              onChange = {this.handleInputChange} 
             />
           </FormGroup>
           <FormGroup className='mb-2 d-flex flex-column'>
             <Label className='mb-0 align-self-start' for='password'>Password</Label>{' '}
-            <Input size='sm' type='password' name='password' placeholder='*****'
+            <Input size='sm' placeholder='*****'
+              type='password' 
+              name='password'
               value = {this.state.password}
-              onChange = {this.handlePasswordChange.bind(this)}
+              onChange = {this.handleInputChange}
             />
           </FormGroup>
           <Button className='mb-3 mt-2 w-50 align-self-center' color='info'>Confirm Identity</Button>
-          <p>New here please <Link to='/login'>Signup</Link>!</p>
+          <p>New here please <Link to='/signup'>Signup</Link>!</p>
         </Form>
       </Container>
     )
   }
-}
+};
 
-export default LoginForm;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    isLoggedIn
+  }, dispatch);
+};
+
+export default connect(mapDispatchToProps)(LoginForm);
