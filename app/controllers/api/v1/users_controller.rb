@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :authenticate_user, only: [:show]
 
   def create
     user = User.new(user_params)
@@ -9,6 +10,11 @@ class Api::V1::UsersController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: 500
     end
   end
+
+  def show
+    render json: current_user.username
+  end
+
 
   private
 

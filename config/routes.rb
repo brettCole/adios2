@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/register' => 'users#create'
-      resources :categories
+      resources :users
       
       mount Knock::Engine => '/knock'
     end
