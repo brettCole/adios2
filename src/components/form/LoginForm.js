@@ -3,8 +3,7 @@ import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import { isLoggedIn } from '../../actions/LoggedIn'
-require ('isomorphic-fetch');
+import { jwt } from '../../actions/login'
 require ('../../components/Register.css');
 
 class LoginForm extends Component {
@@ -27,35 +26,10 @@ class LoginForm extends Component {
 
   onFormSubmit(e) {
     const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
+    const token = 'Bearer ' + localStorage.getItem('jwt');
+    
     e.preventDefault();
-    fetch('http://localhost:3001/user_token', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: data
-    })
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem('jwt', data.jwt)
-      const token = 'Bearer ' + localStorage.getItem('jwt');
-
-      return fetch('http://localhost:3001/api/v1/users/:id', {
-        method: 'GET',
-        headers: {
-          Authorization: token
-        }
-      }).then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-    });
-
-    this.setState({
-      email: '',
-      password: ''
-    });
+    this.props.jwt(data, token);
   }
 
   render() {
@@ -66,7 +40,7 @@ class LoginForm extends Component {
         >
           <Label className='font-weight-bold'>Please Login</Label>
           <FormGroup className='mb-2 d-flex flex-column'>
-            <Label className='mb-0 align-self-start' for='username'>Email</Label>{' '}
+            <Label className='mb-0 align-self-start' for='username'>Email</Label>
             <Input size='sm' 
               type='email' 
               name='email'
@@ -75,7 +49,7 @@ class LoginForm extends Component {
             />
           </FormGroup>
           <FormGroup className='mb-2 d-flex flex-column'>
-            <Label className='mb-0 align-self-start' for='password'>Password</Label>{' '}
+            <Label className='mb-0 align-self-start' for='password'>Password</Label>
             <Input size='sm' placeholder='*****'
               type='password' 
               name='password'
@@ -92,9 +66,7 @@ class LoginForm extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    isLoggedIn
-  }, dispatch);
+  return bindActionCreators({ jwt }, dispatch);
 };
 
-export default connect(mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);
