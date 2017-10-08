@@ -1,4 +1,6 @@
-export function jwt(data, token) {
+require ('isomorphic-fetch');
+
+export function jwt(data, token, routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
     return fetch('http://localhost:3001/user_token', {
@@ -11,7 +13,7 @@ export function jwt(data, token) {
     })
     .then(response => response.json())
     .then(data => {
-      localStorage.setItem('jwt', data.jwt),
+      localStorage.setItem('jwt', data.jwt)
       dispatch({ type: 'RETURN_JWT'});
       dispatch({ type: 'LOADING' });
       return fetch('http://localhost:3001/api/v1/users/:id', {
@@ -21,8 +23,9 @@ export function jwt(data, token) {
         }
       }).then(response => response.json())
       .then(data => {
-        dispatch({ type: 'LOGGED_IN'});
+        dispatch({ type: 'CURRENT_USER', payload: data });
+        routerHistory.replace('/');
       });
-  });
-}
+    });
+  }
 }
