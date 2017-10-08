@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavbarBrand, NavItem, NavLink } from 'reactstrap';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Adios from '../components/Adios'
 import UserLinkOptions from '../components/UserLinkOptions'
 
 class Navigation extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoggedIn: false
-    }
-  }
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
+    debugger;
     return (
       <Navbar className='sticky-top d-flex flex-row' color='faded' light>
         <NavbarBrand className='mr-auto'><Link to='/'><Adios /></Link></NavbarBrand>
@@ -24,11 +18,11 @@ class Navigation extends Component {
             <NavLink className='d-inline align-bottom'><Link to='/'>Find a Rental</Link></NavLink>
           </NavItem>
           <NavItem className='ml-1 mr-3 mt-2'>
-            {!isLoggedIn ? (
+            {this.props.isLoggedIn !== true ? ( 
               <NavLink className='d-inline text-bottom' href='/components/Signin'><Link to='/login'>Login</Link></NavLink>
-            ) : (
+             ) : ( 
               <UserLinkOptions  />
-            )}
+             )}
           </NavItem>
         </Nav>
       </Navbar>
@@ -36,4 +30,8 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.isLoggedIn }
+} 
+
+export default connect(mapStateToProps)(Navigation);
