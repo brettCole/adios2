@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import Navigation from './Navigation'
-import Search from '../components/Search'
-import CheckListLink from '../components/CheckListLink'
-import Flipkey from '../components/Flipkey'
-import Footer from '../components/Footer'
+import Navigation from './Navigation';
+import Search from '../components/Search';
+import CheckListLink from '../components/CheckListLink';
+import Flipkey from '../components/Flipkey';
+import Footer from '../components/Footer';
 require('../components/Register.css');
 
 class Homepage extends Component {
@@ -23,9 +23,9 @@ class Homepage extends Component {
       }
     }).then(response => response.json()) 
     .then(data => {
-      localStorage.setItem('access', data.access_token),
-      localStorage.setItem('refresh', data.refresh_token)
-    })
+      localStorage.setItem('access', data.access_token);
+      localStorage.setItem('refresh', data.refresh_token);
+    });
   }
 
   render() {

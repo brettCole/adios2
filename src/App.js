@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
-// import SignupForm from './components/form/SignupForm'
+import SignupForm from './components/form/SignupForm';
 // import Search from './components/Search'
 import Homepage from './containers/Homepage'
 import LoginForm from './components/form/LoginForm'
@@ -22,6 +23,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route exact path='/' component={Homepage} />
+          <Route path='/signup' component={SignupForm} />
           <Route path='/login' component={LoginForm} />
           <Route path='/checklist' component={ChecklistContainer} />
         </div>
