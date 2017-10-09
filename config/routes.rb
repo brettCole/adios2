@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/register' => 'users#create'
       resources :users
+      post '/create_checklist' => 'categories#create'
       
       mount Knock::Engine => '/knock'
     end
