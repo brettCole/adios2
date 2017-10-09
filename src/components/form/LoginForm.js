@@ -29,7 +29,7 @@ class LoginForm extends Component {
     const token = 'Bearer ' + localStorage.getItem('jwt');
     
     e.preventDefault();
-    this.props.jwt(data, token);
+    this.props.jwt(data, token, this.props.history);
   }
 
   render() {

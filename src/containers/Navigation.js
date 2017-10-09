@@ -9,16 +9,15 @@ import UserLinkOptions from '../components/UserLinkOptions'
 class Navigation extends Component {
 
   render() {
-    debugger;
     return (
       <Navbar className='sticky-top d-flex flex-row' color='faded' light>
-        <NavbarBrand className='mr-auto'><Link to='/'><Adios /></Link></NavbarBrand>
+        <NavbarBrand className='mr-auto' href='/'><Adios /></NavbarBrand>
         <Nav className='d-inline-flex flex-row' navbar>   
           <NavItem className='mr-5 mt-2'>
-            <NavLink className='d-inline align-bottom'><Link to='/'>Find a Rental</Link></NavLink>
+            <NavLink className='d-inline align-bottom' href='/'>Find a Rental</NavLink>
           </NavItem>
           <NavItem className='ml-1 mr-3 mt-2'>
-            {this.props.isLoggedIn !== true ? ( 
+            {this.props.isLoggedIn === false ? ( 
               <NavLink className='d-inline text-bottom' href='/login'>Login</NavLink>
              ) : ( 
               <UserLinkOptions  />
@@ -27,7 +26,7 @@ class Navigation extends Component {
         </Nav>
       </Navbar>
     );  
-  }
+  } 
 }
 
 const mapStateToProps = (state) => {

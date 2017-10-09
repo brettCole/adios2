@@ -5,9 +5,6 @@ import CategoryItem from '../components/CategoryItem'
 import Navigation from './Navigation'
 
 class ChecklistContainer extends Component {
-  constructor() {
-    super();
-  }
 
   render() {
     return (

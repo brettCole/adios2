@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 require ('../../components/Register.css');
 
 class SignupForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       username: '',

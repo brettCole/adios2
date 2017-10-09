@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { connect } from 'react-redux';
 
 class UserLinkOptions extends React.Component {
   constructor(props) {
@@ -22,10 +24,10 @@ class UserLinkOptions extends React.Component {
     return (
       <ButtonDropdown isOpen={ this.state.dropdownOpen } toggle={ this.toggle }>
         <DropdownToggle nav caret>
-          Name
+          {this.props.username}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>Vacation Checklist</DropdownItem>
+          <DropdownItem><Link to='/checklist'>Vacation Checklist</Link></DropdownItem>
           <DropdownItem>Reserved Trips</DropdownItem>
           <DropdownItem>Account</DropdownItem>
           <DropdownItem>Logout</DropdownItem>
@@ -35,4 +37,4 @@ class UserLinkOptions extends React.Component {
   }
 }
 
-export default UserLinkOptions;
+export default connect(null)(UserLinkOptions);
