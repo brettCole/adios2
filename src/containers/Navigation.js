@@ -19,7 +19,7 @@ class Navigation extends Component {
           </NavItem>
           <NavItem className='ml-1 mr-3 mt-2'>
             {this.props.isLoggedIn !== true ? ( 
-              <NavLink className='d-inline text-bottom' href='/components/Signin'><Link to='/login'>Login</Link></NavLink>
+              <NavLink className='d-inline text-bottom' href='/login'>Login</NavLink>
              ) : ( 
               <UserLinkOptions  />
              )}
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
   return { isLoggedIn: state.isLoggedIn }
 } 
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps)(Navigation); 

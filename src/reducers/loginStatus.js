@@ -11,14 +11,14 @@ export default function loginStatus(state = {
     case 'RETURN_JWT':
       return { loading: false }
     case 'CURRENT_USER':
-      let user = Object.assign({}, action.payload)
+      let user = Object.assign({}, state, action.payload)
       return {
         id: user.id,
         username: user.username,
         name: user.name,
         email: user.email,
-        loading: false,
-        isLoggedIn: true }
+        isLoggedIn: true,
+        loading: false }
     case 'LOGGED_OUT':
       return { loading: false, isLoggedIn: false }
     default:
