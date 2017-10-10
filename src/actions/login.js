@@ -1,6 +1,6 @@
 require ('isomorphic-fetch');
 
-export function jwt(data, token, routerHistory) {
+export function jwt(data, routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
     return fetch('http://localhost:3001/user_token', {
@@ -19,12 +19,13 @@ export function jwt(data, token, routerHistory) {
       return fetch('http://localhost:3001/api/v1/users/:id', {
         method: 'GET',
         headers: {
-          Authorization: token
+          Authorization: 'Bearer ' + localStorage.getItem('jwt')
         }
       }).then(response => response.json())
       .then(data => {
+        localStorage.setItem('user', JSON.stringify(data))
         dispatch({ type: 'CURRENT_USER', payload: data });
-        routerHistory.replace('/');
+      routerHistory.replace('/');
       });
     });
   }
