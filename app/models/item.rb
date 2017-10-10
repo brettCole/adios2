@@ -1,3 +1,5 @@
 class Item < ApplicationRecord
-  validates :item, presence: true
+  belongs_to :checklist
+
+  validates :item, :checklist_id, presence: true
 end
