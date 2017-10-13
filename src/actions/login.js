@@ -30,3 +30,8 @@ export function jwt(data, routerHistory) {
     });
   }
 }
+
+export function logout() {
+  return { type: 'LOGOUT'}
+}
+ 

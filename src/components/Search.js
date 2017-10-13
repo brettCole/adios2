@@ -14,21 +14,13 @@ class Search extends React.Component {
     }
   }
 
-  handleQChange = (e) => {
-    this.setState({ q: e.target.value });
-  };
+  handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
 
-  handleCheckInChange = (e) => {
-    this.setState({ date_check_in: e.target.value });
-  };
-
-  handleCheckOutChange = (e) => {
-    this.setState({ date_check_out: e.target.value });
-  };
-
-  handleGuestChange = (e) => {
-    this.setState({ guests: e.target.value });
-  };
+    this.setState({ [name]: value })
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -48,27 +40,27 @@ class Search extends React.Component {
       <Form onSubmit={this.handleSubmit} className='rounded d-flex justify-content-around align-items-end ml-auto mr-auto w-75'>
         <Input className='mb-3 ml-2 w-25' type='search' name='q' placeholder='Where do you want to go?'
           value = {this.state.q}
-          onChange = {this.handleQChange} 
+          onChange = {this.handleInputChange}
         />
         <FormGroup>
           <Label for='date_check_in'>Check In</Label>
           <Input type='date' name='date_check_in' value='new Date()'
             value = {this.state.date_check_in} 
-            onChange = {this.handleCheckInChange}
+            onChange = {this.handleInputChange}
           />
         </FormGroup>
         <FormGroup>
           <Label for='date_check_out'>Check Out</Label>
           <Input type='date' name='date_check_out' placeholder='Check-Out'
             value = {this.state.date_check_out}
-            onChange = {this.handleCheckOutChange}
+            onChange = {this.handleInputChange}
           />
         </FormGroup>
         <FormGroup>
           <Label>Guests</Label>
           <Input type='number' name='guests'
             value = {this.state.guests}
-            onChange = {this.handleGuestChange}
+            onChange = {this.handleInputChange}
           />
         </FormGroup>
         <Button className='mb-3 mr-2'>Search</Button>

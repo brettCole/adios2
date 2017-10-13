@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import Adios from '../components/Adios'
-import UserLinkOptions from '../components/UserLinkOptions'
+import Adios from '../components/Adios';
+import UserLinkOptions from '../components/UserLinkOptions';
 
 class Navigation extends Component {
 
@@ -20,7 +18,7 @@ class Navigation extends Component {
             {this.props.isLoggedIn === false ? ( 
               <NavLink className='d-inline text-bottom' href='/login'>Login</NavLink>
              ) : ( 
-              <UserLinkOptions  />
+              <UserLinkOptions className='mt-0'  />
              )}
           </NavItem>
         </Nav>
@@ -30,7 +28,7 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { isLoggedIn: state.isLoggedIn }
-} 
+  return { isLoggedIn: state.loginStatus.isLoggedIn }
+}
 
 export default connect(mapStateToProps)(Navigation); 
