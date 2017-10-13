@@ -3,7 +3,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def index
     item = Item.all
-    render json: item, status: 200
+    render json: item, only: [:item, :checklist_id], status: 200
   end
 
   def create
@@ -12,6 +12,7 @@ class Api::V1::ItemsController < ApplicationController
       render json: item, status: 200
     else
       render json: { errors: user.errors.full_messages }, status: 500
+    end
   end
 
   private

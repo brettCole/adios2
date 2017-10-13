@@ -3,15 +3,23 @@ class Api::V1::ChecklistsController < ApplicationController
 
   def index
     checklist = Checklist.all
-    render json: checklist, status: 200
+    render json: checklist, include: [:items], only: [:title, :id], status: 200
   end
 
   def create
     checklist = Checklist.new(checklist_params)
     if checklist.valid? && checklist.save
-      render json: checklist, status: 200
+      render json: checklist, only: [:title], status: 200
     else
-      render json: { errors: user.errors.full_messages }, status: 500
+      render json: { errors: checklist.errors.full_messages }, status: 500
+    end
+  end
+
+  def show
+    if checklist = Checklist.find_by(title: params[:title])
+    render json: checklist, only: [:id], status: 200
+    else
+      render json: { errors: checklist.errors.full_messages }, status: 500
     end
   end
 
