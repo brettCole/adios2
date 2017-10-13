@@ -18,11 +18,13 @@ ActiveRecord::Schema.define(version: 20171009225034) do
   create_table "checklists", force: :cascade do |t|
     t.string  "title"
     t.integer "user_id"
+    t.index ["user_id"], name: "index_checklists_on_user_id", using: :btree
   end
 
   create_table "items", force: :cascade do |t|
     t.string  "item"
     t.integer "checklist_id"
+    t.index ["checklist_id"], name: "index_items_on_checklist_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
