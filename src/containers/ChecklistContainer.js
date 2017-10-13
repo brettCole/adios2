@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import CreateCategory from '../components/CreateCategory'
-import CategoryItem from '../components/CategoryItem'
+import CreateChecklist from '../components/CreateChecklist'
+import ChecklistItem from '../components/ChecklistItem'
+import EachChecklistContainer from './EachChecklistContainer'
 import Navigation from './Navigation'
 
 class ChecklistContainer extends Component {
@@ -10,13 +11,11 @@ class ChecklistContainer extends Component {
     return (
       <Container className='w-100 p-0'>
         <Navigation />
-        <CreateCategory />
-        <Container className='w-100 d-flex justify-content-center col-6'>
-          <CategoryItem />
-        </Container>
+        <CreateChecklist />
+        <EachChecklistContainer />
       </Container>
     )
   }
 }
 
-export default ChecklistContainer;
+export default ChecklistContainer; 
