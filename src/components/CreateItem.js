@@ -8,8 +8,8 @@ class CreateItem extends React.Component {
 
     this.state = {
       popoverOpen: false,
-      itemName: ''
-    };
+      item: ''
+    }
   }
 
   toggle =  () => {
@@ -22,16 +22,14 @@ class CreateItem extends React.Component {
     const name = target.name;
 
     this.setState({ [name]: value });
-  }
+  };
 
-  itemNameSubmit = (e) => {
+  onItemNameSubmit = (e) => {
     const checklistData = JSON.stringify({
-      "checklist": {
-        "title": 
-      }
+      "title": e.parentNode.firstChild.innerHTML
     })
     e.preventDefault();
-    fetch('http://localhost:3001/api/v1/checklists:id', {
+    fetch('http://localhost:3001/api/v1/checklist', {
       method: 'GET',
       header: {
         'Accept': 'application/json',
@@ -39,35 +37,49 @@ class CreateItem extends React.Component {
         'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       },
       body: checklistData
+    }).then(response => response.json())
+    .then(data => {
+      const itemData = JSON.stringify({
+        "item": {
+          "item": `${this.state.item}`,
+          "checklist_id": data.id
+        }
+      })
+      fetch('http://localhost:3001/api/v1/create_item', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Cotent-type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+        },
+        body: itemData
+      }).then(response => response.json())
+      .then(data => {
+        this.forceUpdate()
+      })
     })
-
-    const data = JSON.stringify({
-      "item": {
-        "item": `${this.state.itemName}`,
-        "checklist_id": 
-      }
-    })
-  }
+  };
+  
 
   render() {
     return (
       <Container className='d-flex justify-content-center'>
-      <Button id='Popover1' className='w-50 d-flex justify-content-center info' color='info'
-        onClick = {this.toggle}
-      >
-        <EntypoPlus /><p className='mb-0 ml-2'>Add Item</p>
-      </Button>
-      <Popover placement='bottom' isOpen={this.state.popoverOpen} target='Popover1' toggle={this.toggle}>
-      <Form 
-        onSubmit = {this.itemNameSubmit}
-      >
-      <Input size='sm' name='checklistName'
-        value = {this.state.itemName}
-        onChange = {this.handleInputChange}
-      />
-      <Button size='sm' className='w-100 mt-1'>Create</Button>
-      </Form>
-      </Popover>
+        <Button id={'Popover' + this.props.keyIndex} className='w-50 d-flex justify-content-center info' color='info'
+          onClick = {this.toggle}
+        >
+          <EntypoPlus /><p className='mb-0 ml-2'>Add Item</p>
+        </Button>
+        <Popover placement='bottom' isOpen={this.state.popoverOpen} target={'Popover' + this.props.keyIndex} toggle={this.toggle}>
+          <Form 
+            onSubmit = {this.onItemNameSubmit}
+          >
+            <Input size='sm' name='item'
+              value = {this.state.item}
+              onChange = {this.handleInputChange}
+            />
+            <Button size='sm' className='w-100 mt-1'>Create</Button>
+          </Form>
+        </Popover>
       </Container>
     )
   }
