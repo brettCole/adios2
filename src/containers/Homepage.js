@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'reactstrap';
 import Navigation from './Navigation';
 import Search from '../components/Search';
@@ -7,28 +7,7 @@ import Flipkey from '../components/Flipkey';
 import Footer from '../components/Footer';
 require('../components/Register.css');
 
-class Homepage extends Component {
-
-  componentDidMount() {
-    const url = 'https://ws.homeaway.com/oauth/token';
-    const clientId = process.env.REACT_APP_HOMEAWAY_CLIENT_ID;
-    const clientSecret = process.env.REACT_APP_HOMEAWAY_CLIENT_SECRET;
-    const credentials = clientId + ':' + clientSecret;
-    let authVal = 'Basic ' + btoa(credentials);
-
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': authVal,
-      }
-    }).then(response => response.json()) 
-    .then(data => {
-      localStorage.setItem('access', data.access_token);
-      localStorage.setItem('refresh', data.refresh_token);
-    });
-  }
-
-  render() {
+const Homepage = (props) => {
     return(
       <Container className='w-100 display-height p-0'>
         <Navigation />
@@ -43,6 +22,6 @@ class Homepage extends Component {
       </Container>
     )
   }
-}
+
 
 export default Homepage;
