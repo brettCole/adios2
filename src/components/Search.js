@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { homeawaySearch } from '../actions/homeawaySearch';
 require('./Register.css');
 
-class Search extends React.Component {
+class Search extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      search: '',
+      q: '',
       date_check_in: '',
       date_check_out: '',
-      guests: '',
+      guests: ''
     }
   }
 
@@ -24,34 +28,33 @@ class Search extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const url = 'https://ws.homeaway.com/public/search';
-    fetch(url, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.access}`
-      }
-    }).then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
+    const data = JSON.stringify({
+      q: e.target.q.value,
+      imageSize: 'MEDIUM',
+      availabilityStart: `${this.state.date_check_in}`,
+      availabilityEnd: `${this.state.date_check_out}`,
+      minSleeps: `${this.state.guests}`
+    });
+    this.props.homeawaySearch(data, this.props.history);
   }
 
   render() {
-    return(
+    return( 
       <Form onSubmit={this.handleSubmit} className='rounded d-flex justify-content-around align-items-end ml-auto mr-auto w-75'>
-        <Input className='mb-3 ml-2 w-25' type='search' name='q' placeholder='Where do you want to go?'
+        <Input className='mb-3 ml-2 w-25' type='q' name='q' placeholder='Where do you want to go?'
           value = {this.state.q}
           onChange = {this.handleInputChange}
         />
         <FormGroup>
           <Label for='date_check_in'>Check In</Label>
-          <Input type='date' name='date_check_in' value='new Date()'
+          <Input type='date' name='date_check_in'
             value = {this.state.date_check_in} 
             onChange = {this.handleInputChange}
           />
         </FormGroup>
         <FormGroup>
           <Label for='date_check_out'>Check Out</Label>
-          <Input type='date' name='date_check_out' placeholder='Check-Out'
+          <Input type='date' name='date_check_out'
             value = {this.state.date_check_out}
             onChange = {this.handleInputChange}
           />
@@ -69,4 +72,8 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ homeawaySearch }, dispatch);
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(Search));
