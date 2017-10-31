@@ -6,12 +6,10 @@ export default function loginStatus(state = {
   isLoggedIn: false,
   loading: false}, action) {
   switch(action.type) {
-    case 'LOADING':
-      return { loading: true }
     case 'RETURN_JWT':
       return { loading: false }
     case 'CURRENT_USER':
-      const user = Object.assign({}, state, action.payload)
+      const user = Object.assign({}, state, action.payload);
       return {
         id: user.id,
         username: user.username,
