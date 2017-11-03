@@ -24,11 +24,12 @@ gem 'knock'
 
 # IRB alternative
 gem 'pry'
-# OmniAuth for third-party signin
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-homeaway'
+
+# ENV configuration
+gem 'figaro'
+
+# Responses from API
+gem 'faraday'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
