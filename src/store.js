@@ -1,9 +1,11 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import loginStatus from './reducers/loginStatus';
+import searchResults from './reducers/searchResults';
 
 const reducers = combineReducers({
-  loginStatus
+  loginStatus,
+  searchResults
 });
 
 const middleware = [thunk];
