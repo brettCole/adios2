@@ -5,6 +5,7 @@ import SignupForm from './components/form/SignupForm';
 // import Search from './components/Search'
 import Homepage from './containers/Homepage'
 import LoginForm from './components/form/LoginForm'
+import SearchResultsPage from './containers/SearchResultsPage'
 // import Navigation from './containers/Navigation'
 // import CreateCategory from './components/CreateCategory'
 // import CheckListLink from './components/CheckListLink'
@@ -20,12 +21,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <Route exact path='/' component={Homepage} />
-          <Route path='/signup' component={SignupForm} />
-          <Route path='/login' component={LoginForm} />
-          <Route path='/checklist' component={ChecklistContainer} />
-        </div>
+          <div className="App">
+            <Route exact path='/' component={Homepage} />
+            <Route path='/signup' component={SignupForm} />
+            <Route path='/login' component={LoginForm} />
+            <Route path='/checklist' component={ChecklistContainer} />
+            <Route path='/search_results' component={SearchResultsPage} />
+          </div>
       </Router>
     );
   }

@@ -20,7 +20,7 @@ export function homeawaySearch(data, routerHistory) {
     })
     .then(response => response.json())
     .then(list => {
-      dispatch({ type: 'NOTLOADING'});
+      dispatch({ type: 'NOTLOADING' });
       dispatch(receiveListings(list));
       routerHistory.replace('/search_results');
     });

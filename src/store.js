@@ -1,17 +1,31 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
+import loading from './reducers/loading';
 import loginStatus from './reducers/loginStatus';
 import searchResults from './reducers/searchResults';
+import { loadState, saveState } from './localStorage';
 
 const reducers = combineReducers({
+  loading,
   loginStatus,
   searchResults
 });
 
+const persistedState = loadState();
+
 const middleware = [thunk];
 
-export default createStore(
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(...middleware)
-);
+  persistedState,
+  composeEnhancers(
+    applyMiddleware(...middleware)
+  )
+)
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
+export default store;
