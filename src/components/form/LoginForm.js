@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import Navigation from '../../containers/Navigation'
 import { jwt } from '../../actions/login'
+import { BeatLoader } from 'react-spinners';
 require ('../../components/Register.css');
 
 class LoginForm extends Component {
@@ -13,7 +14,8 @@ class LoginForm extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loading: false
     }
   }
 
@@ -25,9 +27,11 @@ class LoginForm extends Component {
     this.setState({ [name]: value });
   }
 
-  onFormSubmit(e) {
+  onFormSubmit = (e) => {
+    this.setState({
+      loading: true
+    });
     const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
-    
     e.preventDefault();
     this.props.jwt(data, this.props.history);
   }
@@ -38,7 +42,7 @@ class LoginForm extends Component {
         <Navigation />
         <Container className='homepage_background_3 w-100 d-flex justify-content-center align-items-center display-height'>
           <Form 
-            onSubmit={this.onFormSubmit.bind(this)} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'
+            onSubmit={this.onFormSubmit} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'
           >
             <Label className='font-weight-bold'>Please Login</Label>
             <FormGroup className='mb-2 d-flex flex-column'>
@@ -59,7 +63,15 @@ class LoginForm extends Component {
                 onChange = {this.handleInputChange}
               />
             </FormGroup>
-            <Button className='mb-3 mt-2 w-50 align-self-center' color='info'>Confirm Identity</Button>
+            <Button className='mb-3 mt-2 w-50 align-self-center' color='info'>
+              {this.state.loading ? (
+                <BeatLoader
+                  color={'#123abc'}
+                  loading={this.state.loading}
+                >Confirm Identity</BeatLoader> ) : (
+                'Confirm Identity' )
+              }
+            </Button>
             <p>New here please <Link to='/signup'>Signup</Link>!</p>
           </Form>
         </Container>

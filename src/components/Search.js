@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { homeawaySearch } from '../actions/homeawaySearch';
+import { BeatLoader } from 'react-spinners';
 require('./Register.css');
 
 class Search extends Component {
@@ -14,7 +15,8 @@ class Search extends Component {
       q: '',
       date_check_in: '',
       date_check_out: '',
-      guests: ''
+      guests: '',
+      loading: false
     }
   }
 
@@ -27,6 +29,9 @@ class Search extends Component {
   }
 
   handleSubmit = (e) => {
+    this.setState({
+      loading: true
+    });
     e.preventDefault();
     const data = JSON.stringify({
       q: e.target.q.value,
@@ -66,7 +71,15 @@ class Search extends Component {
             onChange = {this.handleInputChange}
           />
         </FormGroup>
-        <Button className='mb-3 mr-2'>Search</Button>
+        <Button className='mb-3 mr-2'>
+          {this.state.loading ? (
+            <BeatLoader
+              color={'#000'}
+              loading={this.state.loading}
+            >Search</BeatLoader> ) : (
+            'Search'
+          )}
+        </Button>
       </Form>    
     )
   }
