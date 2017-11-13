@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171015010304) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string  "item"
+    t.string  "title"
     t.integer "checklist_id"
     t.index ["checklist_id"], name: "index_items_on_checklist_id", using: :btree
   end
