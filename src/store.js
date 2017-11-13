@@ -1,11 +1,13 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import loading from './reducers/loading';
+import createChecklist from './reducers/checklist';
 import loginStatus from './reducers/loginStatus';
 import searchResults from './reducers/searchResults';
 import { loadState, saveState } from './localStorage';
 
 const reducers = combineReducers({
+  createChecklist,
   loading,
   loginStatus,
   searchResults
@@ -26,6 +28,10 @@ const store = createStore(
 )
 
 store.subscribe(() => {
-  saveState(store.getState());
+  saveState({
+    checklists: store.getState().checklists,
+    loginStatus: store.getState().loginStatus,
+    searchResults: store.getState().searchResults,
+  });
 });
 export default store;

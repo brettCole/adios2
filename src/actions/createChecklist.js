@@ -25,8 +25,8 @@ export function createChecklist(data) {
     })
     .then(response => response.json()) 
     .then(data => {
-      localStorage.setItem('checklists', JSON.stringify(data))
       dispatch({ type: 'RETURN_CHECKLISTS'});
+      window.location.reload(true);
     });
   }
 }

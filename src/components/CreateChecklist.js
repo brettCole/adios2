@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Container, Button, Modal, ModalHeader, ModalBody, Form, Input } from 'reactstrap';
 import { EntypoPlus } from 'react-entypo';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { createChecklist } from '../actions/createChecklist'
+import { createChecklist } from '../actions/createChecklist';
 
 class CreateChecklist extends Component {
   constructor(props) {
@@ -30,13 +31,13 @@ class CreateChecklist extends Component {
   }
 
   checklistNameSubmit = (e) => {
+    e.preventDefault();
     const data = JSON.stringify({
       "checklist": {
         "title": `${this.state.checklistName}`,
         "user_id": `${JSON.parse(localStorage.getItem('user')).id}`
       }
     })
-    e.preventDefault();
     this.props.createChecklist(data);
   }
 
@@ -52,7 +53,7 @@ class CreateChecklist extends Component {
           <ModalHeader toggle={this.toggle}>Checklist Title</ModalHeader>
           <ModalBody>
             <Form 
-              onSubmit = {this.checklistNameSubmit}
+              onSubmit = {this.checklistNameSubmit.bind(this)}
             >
               <Input size='sm' name='checklistName'
                 value = {this.state.checklistName}
@@ -71,4 +72,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ createChecklist }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(CreateChecklist);
+export default withRouter(connect(null, mapDispatchToProps)(CreateChecklist)); 
