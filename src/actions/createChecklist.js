@@ -1,5 +1,16 @@
 require ('isomorphic-fetch');
 
+export function receiveChecklists(lists) {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING' });
+    dispatch({
+      type: 'RECEIVE_CHECKLISTS',
+      payload: lists,
+    });
+    dispatch({ type: 'NOTLOADING' });
+  }
+}
+
 export function createChecklist(data) {
   return (dispatch) => {
     dispatch({ type: 'LOADING'});

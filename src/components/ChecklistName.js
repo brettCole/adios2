@@ -1,30 +1,37 @@
 import React from 'react';
 import { Button, Container, Form, Input, ListGroup, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
-import CreateItem from './CreateItem'
+import { connect } from 'react-redux';
 import { EntypoPlus } from 'react-entypo';
+import CreateItem from './CreateItem';
 
 const ChecklistName = (props) => {
-  const lists = props.checklists.map((element, index) => {
-    const listItem = element.items.map((each, v) => 
-      <div>
-      <ListGroupItemText key={v}>{each.item}</ListGroupItemText>
-      </div>
-    )
-    return (
-    <Container className='w-50'>
-      <ListGroup>
-        <ListGroupItemHeading key={index}>{element.title}</ListGroupItemHeading>
-        <CreateItem handleInputChange = {props.handleInputChange} />
-        {listItem}
-      </ListGroup>
-    </Container>)
-  })
-  
-  return(
+  return (
     <Container className='d-flex flex-row flex-wrap justify-content-between mt-5'>
-      {lists}
+      {props.checklists ? (
+        props.checklists.map((element, index) => {
+          return (
+            <Container className='w-50 mb-5'>
+              <ListGroup>
+                <ListGroupItemHeading key={index.toString()}>{element.title}</ListGroupItemHeading>
+                <CreateItem
+                  keyIndex = {index + 1}
+                />
+                {element.items.map((each, i) => {
+                  return (
+                    <div key={i.toString()}>
+                      <ListGroupItemText className='mb-1'>{each.title}</ListGroupItemText>
+                    </div>
+                  )
+                })}
+              </ListGroup>
+            </Container> )
+        })
+      ) : (null)}
     </Container>
-  )
-}
+  )} 
 
-export default ChecklistName;
+const mapStateToProps = (state) => {
+  return { checklists: state.createChecklist.checklists }
+}
+ 
+export default connect(mapStateToProps)(ChecklistName);

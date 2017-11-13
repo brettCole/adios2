@@ -1,37 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ChecklistName from '../components/ChecklistName';
+import { receiveChecklists } from '../actions/createChecklist';
 require ('isomorphic-fetch');
 
 class EachChecklistContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      checklists: []
-    };
-  }
-
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/checklists', {
       method: 'GET',
       headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('jwt')
       }
     })
     .then(response => response.json())
-    .then(data => {
-      this.setState({ checklists: data })
-    }
-    );
+    .then(lists => {
+      this.props.receiveChecklists(lists);
+    });
   }
 
   render() {
     return (
-      <ChecklistName 
-        checklists = { this.state.checklists }
-      />
+      <ChecklistName />
     )
   }
 }
 
-export default EachChecklistContainer;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ receiveChecklists }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(EachChecklistContainer);
