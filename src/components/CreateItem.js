@@ -1,6 +1,10 @@
 import React from 'react';
-import { Button, Container, Form, Input, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Button, Container, Form, Input, Popover } from 'reactstrap';
 import { EntypoPlus } from 'react-entypo';
+import { createItem } from '../actions/createItem';
+require ('isomorphic-fetch');
 
 class CreateItem extends React.Component {
   constructor(props) {
@@ -13,7 +17,8 @@ class CreateItem extends React.Component {
   }
 
   toggle =  () => {
-    this.setState({ popoverOpen: !this.state.popoverOpen });
+    this.setState({ popoverOpen: !this.state.popoverOpen }); 
+
   }
 
   handleInputChange = (e) => {
@@ -24,60 +29,40 @@ class CreateItem extends React.Component {
     this.setState({ [name]: value });
   };
 
-  onItemNameSubmit = (e) => {
-    const checklistData = JSON.stringify({
-      "title": e.parentNode.firstChild.innerHTML
+  onItemNameSubmit(e) {
+    const buttonCall = document.getElementById('Popover' + this.props.keyIndex);
+    const checklistName = buttonCall.parentElement.parentElement.firstElementChild.textContent;
+    const itemData = JSON.stringify({
+      "item": {
+        "title": `${this.state.item}`,
+        "checklist_id": checklistName
+      }
     })
     e.preventDefault();
-    fetch('http://localhost:3001/api/v1/checklist', {
-      method: 'GET',
-      header: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-      },
-      body: checklistData
-    }).then(response => response.json())
-    .then(data => {
-      const itemData = JSON.stringify({
-        "item": {
-          "item": `${this.state.item}`,
-          "checklist_id": data.id
-        }
-      })
-      fetch('http://localhost:3001/api/v1/create_item', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Cotent-type': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-        },
-        body: itemData
-      }).then(response => response.json())
-      .then(data => {
-        this.forceUpdate()
-      })
-    })
-  };
+    this.props.createItem(itemData);
+    }
   
-
+  
+ 
   render() {
+    
     return (
       <Container className='d-flex justify-content-center'>
         <Button id={'Popover' + this.props.keyIndex} className='w-50 d-flex justify-content-center info' color='info'
+          key = {'Popover' + this.props.keyIndex}
           onClick = {this.toggle}
         >
           <EntypoPlus /><p className='mb-0 ml-2'>Add Item</p>
         </Button>
-        <Popover placement='bottom' isOpen={this.state.popoverOpen} target={'Popover' + this.props.keyIndex} toggle={this.toggle}>
+        <Popover className={this.props.keyIndex} placement='bottom' isOpen={this.state.popoverOpen} target={'Popover' + this.props.keyIndex} toggle={this.toggle}>
           <Form 
-            onSubmit = {this.onItemNameSubmit}
+            onSubmit={this.onItemNameSubmit.bind(this)}
           >
             <Input size='sm' name='item'
               value = {this.state.item}
               onChange = {this.handleInputChange}
             />
-            <Button size='sm' className='w-100 mt-1'>Create</Button>
+            <Button size='sm' className='w-100 mt-1'>Create Item</Button>
           </Form>
         </Popover>
       </Container>
@@ -85,4 +70,8 @@ class CreateItem extends React.Component {
   }
 }
 
-export default CreateItem;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ createItem }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(CreateItem);

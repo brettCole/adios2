@@ -1,10 +1,9 @@
 import React from 'react';
-import { Button, Container, Form, Input, ListGroup, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import { Container, ListGroup, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 import { connect } from 'react-redux';
-import { EntypoPlus } from 'react-entypo';
 import CreateItem from './CreateItem';
 
-const ChecklistName = (props) => {
+const ChecklistName = (props) => { 
   return (
     <Container className='d-flex flex-row flex-wrap justify-content-between mt-5'>
       {props.checklists ? (
