@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, ListGroup, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 import { connect } from 'react-redux';
 import CreateItem from './CreateItem';
+import { v4 } from 'uuid';
 
 const ChecklistName = (props) => { 
   return (
@@ -9,16 +10,16 @@ const ChecklistName = (props) => {
       {props.checklists ? (
         props.checklists.map((element, index) => {
           return (
-            <Container className='w-50 mb-5'>
-              <ListGroup>
-                <ListGroupItemHeading key={index.toString()}>{element.title}</ListGroupItemHeading>
-                <CreateItem
+            <Container key={v4()} className='w-50 mb-5'>
+              <ListGroup key={v4()}>
+                <ListGroupItemHeading key={v4()}>{element.title}</ListGroupItemHeading>
+                <CreateItem key={v4()}
                   keyIndex = {index + 1}
                 />
                 {element.items.map((each, i) => {
                   return (
-                    <div key={i.toString()}>
-                      <ListGroupItemText className='mb-1'>{each.title}</ListGroupItemText>
+                    <div key={v4()}>
+                      <ListGroupItemText key={v4()} className='mb-1'>{each.title}</ListGroupItemText>
                     </div>
                   )
                 })}
