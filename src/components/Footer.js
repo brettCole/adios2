@@ -11,7 +11,7 @@ class Footer extends React.Component {
           <InputGroup className='mt-2 w-50'>
             <Input className='footer-email' type='email' name='email' placeholder='Email Address' />
             <InputGroupAddon className='footer-email'>
-              <a href='#'>
+              <a href='http://localhost:3001/api/v1/email'>
                 Subscribe
               </a>
             </InputGroupAddon>
@@ -19,7 +19,7 @@ class Footer extends React.Component {
         </div>
         <hr className='w-75 mt-4' color='black' />
         <div className='d-flex justify-content-around'>
-          <p className='w-50 align-self-center'>Thanks for checking out my React Adíos Vaca App. I am a enthusiastic full-stack web developer. Send me a email or check me out on LinkedIn. You can read about some of my struggles and things I've learned along the way on my blog. Shameless Plug</p>
+          <p className='w-50 align-self-center'>Thanks for checking out my React Adíos Vaca App. I am a enthusiastic full-stack web developer. Send me an email or check me out on LinkedIn. You can read about some of my struggles and things I've learned along the way on my blog. Shameless Plug</p>
           <div className='vertical'></div>
           <div className='align-self-center'>
             <p>acodercalledcole@gmail.com</p>
