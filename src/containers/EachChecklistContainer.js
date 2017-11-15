@@ -7,7 +7,7 @@ require ('isomorphic-fetch');
 
 class EachChecklistContainer extends Component {
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/checklists', {
+    fetch(`http://localhost:3001/api/v1/checklists?user_id=${JSON.parse(localStorage.getItem('user')).id}`, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
