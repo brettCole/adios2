@@ -7,19 +7,21 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    # Find checklist first then use that id to corrolate the two
-    binding.pry
     item = Item.new(item_params)
     if item.valid? && item.save
       render json: item, only: [:item, :id], status: 200
     else
-      render json: { errors: user.errors.full_messages }, status: 500
+      render json: { errors: item.errors.full_messages }, status: 500
     end
   end
 
   private
 
+  def found_checklist
+    @checklist = Checklist.find_by(:title => params[:item][:checklist_id])
+  end
+
   def item_params
-    params.require(:item).permit(:title, :checklist_id)
+    params.require(:item).permit(:title).merge(:checklist_id => found_checklist.id)
   end
 end

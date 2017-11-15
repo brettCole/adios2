@@ -2,7 +2,8 @@ class Api::V1::ChecklistsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    checklist = Checklist.all
+    user = User.find_by(:id => params[:user_id].to_i)
+    checklist = user.checklists.all
     render json: checklist, include: [:items], only: [:title, :id], status: 200
   end
 
@@ -17,7 +18,7 @@ class Api::V1::ChecklistsController < ApplicationController
 
   def show
     if checklist = Checklist.find_by(title: params[:title])
-    render json: checklist, only: [:id], status: 200
+      render json: checklist, only: [:id, :title], status: 200
     else
       render json: { errors: checklist.errors.full_messages }, status: 500
     end
