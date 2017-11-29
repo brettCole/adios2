@@ -1,10 +1,11 @@
 export default function loginStatus(state = {
-  id: null,
-  username: null,
-  name: null,
-  email: null,
-  isLoggedIn: false,
-  loading: false}, action) {
+    id: null,
+    username: null,
+    name: null,
+    email: null,
+    isLoggedIn: false,
+    loading: false
+  }, action) {
   switch(action.type) {
     case 'RETURN_JWT':
       return { loading: false }
@@ -16,7 +17,8 @@ export default function loginStatus(state = {
         name: user.name,
         email: user.email,
         isLoggedIn: true,
-        loading: false }
+        loading: false
+      }
     case 'LOGGED_OUT':
       return { 
         loading: false, 
@@ -24,7 +26,8 @@ export default function loginStatus(state = {
         id: null,
         username: null,
         name: null,
-        email: null }
+        email: null
+      }
     default:
       return state;
   }

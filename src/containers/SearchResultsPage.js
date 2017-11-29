@@ -52,6 +52,7 @@ const SearchResultsPage = (props) => {
       </div>
     </Card>
   );
+
   return (
     <div className='footer-background'>
       <Navigation />
@@ -66,6 +67,6 @@ const SearchResultsPage = (props) => {
 
 const mapStateToProps = (state) => {
   return { listings: state.searchResults.listings }
-} 
+}
 
 export default connect(mapStateToProps)(SearchResultsPage);

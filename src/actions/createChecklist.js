@@ -5,7 +5,7 @@ export function receiveChecklists(lists) {
     dispatch({ type: 'LOADING' });
     dispatch({
       type: 'RECEIVE_CHECKLISTS',
-      payload: lists,
+      payload: lists
     });
     dispatch({ type: 'NOTLOADING' });
   }

@@ -42,10 +42,7 @@ class CreateItem extends React.Component {
     this.props.createItem(itemData);
     }
   
-  
- 
-  render() {
-    
+  render() {  
     return (
       <Container className='d-flex justify-content-center'>
         <Button id={'Popover' + this.props.keyIndex} className='w-50 d-flex justify-content-center info' color='info'
@@ -54,7 +51,7 @@ class CreateItem extends React.Component {
         >
           <EntypoPlus /><p className='mb-0 ml-2'>Add Item</p>
         </Button>
-        <Popover className={this.props.keyIndex} placement='bottom' isOpen={this.state.popoverOpen} target={'Popover' + this.props.keyIndex} toggle={this.toggle}>
+        <Popover placement='bottom' isOpen={this.state.popoverOpen} target={'Popover' + this.props.keyIndex} toggle={this.toggle}>
           <Form 
             onSubmit={this.onItemNameSubmit.bind(this)}
           >

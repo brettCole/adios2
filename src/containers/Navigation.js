@@ -15,9 +15,9 @@ class Navigation extends Component {
             <NavLink className='d-inline align-bottom' href='/'>Find a Rental</NavLink>
           </NavItem>
           <NavItem className='ml-1 mr-3 mt-2'>
-            {this.props.isLoggedIn === false ? ( 
+            {!this.props.isLoggedIn ? ( 
               <NavLink className='d-inline text-bottom' href='/login'>Login</NavLink>
-             ) : ( 
+             ) : (
               <UserLinkOptions className='mt-0'  />
              )}
           </NavItem>

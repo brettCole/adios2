@@ -32,6 +32,6 @@ export function jwt(data, routerHistory) {
 }
 
 export function logout() {
-  return { type: 'LOGOUT'}
+  return { type: 'LOGGED_OUT'}
 }
  
