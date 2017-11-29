@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
       req.headers['Authorization'] = "Bearer #{@token_hash['access_token']}"
     end
     @search_result = JSON.parse(@search.body)
-    binding.pry
+    # binding.pry
     render json: @search_result
   end
 
