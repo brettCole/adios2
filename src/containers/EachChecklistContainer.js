@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ChecklistName from '../components/ChecklistName';
 import { receiveChecklists } from '../actions/createChecklist';
+import { completedItem } from '../actions/createItem';
 require ('isomorphic-fetch');
 
 class EachChecklistContainer extends Component {

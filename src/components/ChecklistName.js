@@ -7,23 +7,20 @@ import CreateItem from './CreateItem';
 import { EntypoCheck } from 'react-entypo';
 import { v4 } from 'uuid';
 
-// const ChecklistName = (props) => { 
-  class ChecklistName extends React.Component {
+class ChecklistName extends React.Component {
 
-    completedItem(e) {
-      const parentId = parseInt(e.currentTarget.parentElement.parentElement.firstChild.id, 10);
-      const itemId = parseInt(e.currentTarget.id, 10);
-      e.preventDefault();
-      this.props.completedItem(itemId, parentId);
-    }
+  completedItem(e) {
+    const parentId = parseInt(e.currentTarget.parentElement.parentElement.firstChild.id, 10);
+    const itemId = parseInt(e.currentTarget.id, 10);
+    e.preventDefault();
+    this.props.completedItem(itemId, parentId);
+  }
 
-    render() {
-      debugger;
+  render() {
   return (
     <Container className='d-flex flex-row flex-wrap justify-content-between mt-5'>
       {this.props.checklists ? (
         this.props.checklists.map((element, index) => {
-          console.log(element, element.items)
           return (
             <Container key={v4()} className='w-50 mb-5'>
               <ListGroup key={v4()}>
@@ -34,15 +31,15 @@ import { v4 } from 'uuid';
                 {element.items.map((each, i) => {
                   return (
                     <div key={v4()}>
-                      {each.completed === true ? (
+                      {JSON.parse(localStorage.getItem('state')).checklists.checklists[index].items[i].completed === true ? (
                         <ListGroupItemText id={each.id} key={v4()} className='mb-1' 
-                          
+                          onClick={this.completedItem.bind(this)}
                         ><EntypoCheck />{each.title}</ListGroupItemText>
-                      ) : (
+                  ) : (
                         <ListGroupItemText id={each.id} key={v4()} className='mb-1' 
                           onClick={this.completedItem.bind(this)}
                         >{each.title}</ListGroupItemText>
-                      ) }
+                    ) }
                     </div>
                   )
                 })}
