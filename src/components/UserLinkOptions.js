@@ -47,11 +47,11 @@ class UserLinkOptions extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { username: state.loginStatus.username};
+  return { username: state.loginStatus.username };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ logout}, dispatch);
+  return bindActionCreators({ logout }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLinkOptions);

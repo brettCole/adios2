@@ -64,6 +64,9 @@ export function signup(data, routerHistory) {
 }
 
 export function logout() {
-  return { type: 'LOGGED_OUT'}
+  return (dispatch) => {
+    dispatch({ type: 'LOGGED_OUT' })
+    window.location.replace('/login');
+  }
 }
  
