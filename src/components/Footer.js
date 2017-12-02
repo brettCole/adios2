@@ -1,20 +1,55 @@
 import React from 'react';
-import { Container, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { Button, Container, InputGroup, Input } from 'reactstrap';
 require('../components/Register.css');
 
-class Footer extends React.Component {
+class Footer extends React.Component { 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      email: ''
+    }
+  }
+
+  handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({ [name]: value });
+  }
+
+  onSubmitEmail = (e) => {
+    e.preventDefault();
+    const url = 'http://localhost:3001/api/v1/email';
+    const data = `{"email":{"email":"${this.state.email}"}}`
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: data
+    })
+    this.setState({
+      email: ''
+    })
+  }
+
   render() {
     return (
       <Container className='w-100 footer-background'>
         <div className='d-flex col-lg-10 mr-auto ml-auto'>
           <p className='w-50 mt-2'>Subscribe to our newsletter to receive current vacation rental deals and specials</p>
           <InputGroup className='mt-2 w-50'>
-            <Input className='footer-email' type='email' name='email' placeholder='Email Address' />
-            <InputGroupAddon className='footer-email'>
-              <a href='http://localhost:3001/api/v1/email'>
-                Subscribe
-              </a>
-            </InputGroupAddon>
+            <Input className='footer-email' 
+              type='email' 
+              name='email' 
+              value={this.state.email}
+              onChange={this.handleInputChange} placeholder='Email Address' />
+            <Button className='footer-email'
+              onClick={this.onSubmitEmail}
+            >Subscribe</Button>
           </InputGroup>
         </div>
         <hr className='w-75 mt-4' color='black' />
