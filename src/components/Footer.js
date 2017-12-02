@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Container, InputGroup, Input } from 'reactstrap';
-require('../components/Register.css');
 
 class Footer extends React.Component { 
   constructor(props) {

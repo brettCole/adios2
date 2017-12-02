@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import Navigation from '../../containers/Navigation'
 import { jwt } from '../../actions/login'
 import { BeatLoader } from 'react-spinners';
-require ('../../components/Register.css');
 
 class LoginForm extends Component {
   constructor(props) {

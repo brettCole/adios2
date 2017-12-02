@@ -5,7 +5,6 @@ import Search from '../components/Search';
 import CheckListLink from '../components/CheckListLink';
 import Flipkey from '../components/Flipkey';
 import Footer from '../components/Footer';
-require('../components/Register.css');
 
 const Homepage = (props) => {
     return(

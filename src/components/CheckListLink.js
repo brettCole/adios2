@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-require('../components/Register.css');
 
 const CheckListLink = () => {
   return(

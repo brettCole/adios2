@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { signup } from '../../actions/login';
 import { BeatLoader } from 'react-spinners';
-require ('../../components/Register.css');
 
 class SignupForm extends Component {
   constructor(props) {

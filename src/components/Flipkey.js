@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-require('../components/Register.css');
 
 const FlipKey = () => {
   return (

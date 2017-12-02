@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { homeawaySearch } from '../actions/homeawaySearch';
 import { BeatLoader } from 'react-spinners';
-require('./Register.css');
 
 class Search extends Component {
   constructor(props) {
