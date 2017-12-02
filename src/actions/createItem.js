@@ -25,7 +25,6 @@ export function completedItem(itemId, parentId) {
     const state = getState()
     const parent = state.createChecklist.checklists.find(obj => obj.id === parentId)
     const childItem = parent.items.find(obj => obj.id === itemId)
-    // debugger;
     dispatch({
       type: 'CHECKED_OFF_ITEM',
       parent,
