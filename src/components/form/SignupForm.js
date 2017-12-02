@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { signup } from '../../actions/login';
 import { BeatLoader } from 'react-spinners';
+import Footer from '../../components/Footer';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class SignupForm extends Component {
     return (
       <div>
         <Navigation />
-        <Container className='homepage_background_2 w-100 d-flex justify-content-center align-items-center display-height'>
+        <Container className='homepage_background_4 w-100 d-flex justify-content-center align-items-center display-height'>
           <Form
             onSubmit={this.onFormSubmit} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'
           >
@@ -92,9 +93,10 @@ class SignupForm extends Component {
                   'Confirm Identity' )
               }
             </Button>
-          <p>Been here before? Please <Link to='/login'>Login</Link>!</p>
-        </Form>
-      </Container>
+            <p>Been here before? Please <Link to='/login'>Login</Link>!</p>
+          </Form>
+        </Container>
+        <Footer></Footer>
       </div>
     )
   }

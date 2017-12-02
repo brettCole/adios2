@@ -8,7 +8,7 @@
 
 .homepage_background {
   height: 100vh;
-  background: url('./images/ishan-seefromthesky-118523.jpg')
+  background: url('./images/garrett-parker-247225.jpg')
               no-repeat center center;
   background-size: cover;
 }
@@ -23,6 +23,13 @@
 .homepage_background_3 {
   height: 100vh;
   background: url('./images/jonathan-klok-379720.jpg')
+              no-repeat center center;
+  background-size: cover;
+}
+
+.homepage_background_4 {
+  height: 100vh;
+  background: url('./images/gordon-williams-257623.jpg')
               no-repeat center center;
   background-size: cover;
 }

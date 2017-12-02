@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Navigation from '../../containers/Navigation'
 import { jwt } from '../../actions/login'
 import { BeatLoader } from 'react-spinners';
+import Footer from '../../components/Footer';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class LoginForm extends Component {
     return (
       <div>
         <Navigation />
-        <Container className='homepage_background_3 w-100 d-flex justify-content-center align-items-center display-height'>
+        <Container className='homepage_background w-100 d-flex justify-content-center align-items-center display-height'>
           <Form 
             onSubmit={this.onFormSubmit} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'
           >
@@ -74,6 +75,7 @@ class LoginForm extends Component {
             <p>New here please <Link to='/signup'>Signup</Link>!</p>
           </Form>
         </Container>
+        <Footer></Footer>
       </div>
     )
   }
