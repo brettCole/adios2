@@ -57,7 +57,7 @@ class Footer extends React.Component {
           <p className='w-50 align-self-center'>Thanks for checking out my React Adíos Vaca App. I am a enthusiastic full-stack web developer. Send me an email or check me out on LinkedIn. You can read about some of my struggles and things I've learned along the way on my blog. Shameless Plug</p>
           <div className='vertical'></div>
           <div className='align-self-center'>
-            <p>acodercalledcole@gmail.com</p>
+            <p><a href="mailto:acodercalledcole@gmail.com">acodercalledcole@gmail.com</a></p>
             <p><a href='https://www.linkedin.com/in/brett-cole-ba86b297/'>LinkedIn</a></p>
             <a href='http://www.acodercalledcole.com'>acodercalledcole.com</a>
           </div>
