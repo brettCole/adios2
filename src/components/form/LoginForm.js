@@ -3,8 +3,8 @@ import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import Navigation from '../../containers/Navigation'
-import { jwt } from '../../actions/login'
+import Navigation from '../../containers/Navigation';
+import { jwt } from '../../actions/login';
 import { BeatLoader } from 'react-spinners';
 import Footer from '../../components/Footer';
 

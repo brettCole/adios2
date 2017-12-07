@@ -4,7 +4,6 @@ import loading from './reducers/loading';
 import createChecklist from './reducers/checklist';
 import loginStatus from './reducers/loginStatus';
 import searchResults from './reducers/searchResults';
-// import checklistItems from './reducers/checklistItems';
 import { loadState, saveState } from './localStorage';
 
 const reducers = combineReducers({
