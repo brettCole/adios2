@@ -2,10 +2,12 @@ export default function createChecklist(state = [], action) {
   switch(action.type) {
     case 'RECEIVE_CHECKLISTS':
       return {
-        checklists: action.payload.map((element) => {
-          return {...element}
-          })
-        }
+        checklists: action.payload
+      }
+    case 'CREATE_CHECKLISTS_SUCCESS':
+      return {...state,
+        checklists: state.checklists.concat(Object.assign({}, action.payload, {items: []}))
+      }
     case 'CHECKED_OFF_ITEM':
       return {
         checklists: action.state.map((element) => {

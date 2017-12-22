@@ -39,6 +39,10 @@ class CreateChecklist extends Component {
       }
     })
     this.props.createChecklist(data);
+    this.setState({
+      modal: false,
+      checklistName: ''
+    })
   }
 
   render() {
