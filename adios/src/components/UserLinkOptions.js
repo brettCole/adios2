@@ -32,7 +32,7 @@ class UserLinkOptions extends React.Component {
   render() {
     return (
       <ButtonDropdown isOpen={ this.state.dropdownOpen } toggle={ this.toggle }>
-        <DropdownToggle nav>
+        <DropdownToggle nav className="pt-0">
           {(this.props.username) ? this.props.username : (undefined) }
         </DropdownToggle>
         <DropdownMenu right>
