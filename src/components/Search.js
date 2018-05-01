@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { homeawaySearch } from '../actions/homeawaySearch';
-import { BeatLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 
 class Search extends Component {
   constructor(props) {
@@ -72,10 +72,13 @@ class Search extends Component {
         </FormGroup>
         <Button className='mb-3 mr-2'>
           {this.state.loading ? (
-            <BeatLoader
-              color={'#000'}
+            <PulseLoader
+              color={'#7ED321'}
               loading={this.state.loading}
-            >Search</BeatLoader> ) : (
+              size={10}
+            >
+              Search
+            </PulseLoader> ) : (
             'Search'
           )}
         </Button>
