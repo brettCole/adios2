@@ -66,7 +66,7 @@ class LoginForm extends Component {
             <Button className='mb-3 mt-2 w-50 align-self-center' color='info'>
               {this.state.loading ? (
                 <BeatLoader
-                  color={'#123abc'}
+                  color={'#fff'}
                   loading={this.state.loading}
                 >Confirm Identity</BeatLoader> ) : (
                 'Confirm Identity' )
