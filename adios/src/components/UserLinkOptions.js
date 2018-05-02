@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -36,10 +36,41 @@ class UserLinkOptions extends React.Component {
           {(this.props.username) ? this.props.username : (undefined) }
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem><Link to='/checklist'>Vacation Checklist</Link></DropdownItem>
-          <DropdownItem>Reserved Trips</DropdownItem>
-          <DropdownItem>Account</DropdownItem>
-          <DropdownItem onClick={this.logout}>Logout</DropdownItem>
+          <DropdownItem>
+            <NavLink 
+              to='/checklist'
+              className="text-secondary nav-link"
+            >
+              Vacation Checklist
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem className="text-secondary">
+            <NavLink
+              to='/'
+              className='nav-link'
+            >
+              Reserved Trips
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem className="text-secondary">
+            <NavLink
+              to='/'
+              className="nav-link"
+            >
+              Account
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem 
+            onClick={this.logout} 
+            className="text-secondary"
+          >
+            <NavLink
+              to='/'
+              className='nav-link'
+            >
+              Logout
+            </NavLink>
+          </DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
     );

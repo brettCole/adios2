@@ -8,12 +8,12 @@ import Footer from '../components/Footer';
 
 const Homepage = (props) => {
     return(
-      <Container className='w-100 display-height p-0'>
+      <Container className='col p-0'>
         <Navigation />
-        <Container className='d-flex align-items-center w-100 search-height homepage_background_3 p-0'>
+        <Container className='col d-flex align-items-center w-100 search-height homepage_background_3 p-0'>
           <Search />
         </Container>
-        <Container className='w-100 p-0'>
+        <Container className='col p-0'>
           <CheckListLink />
         </Container>
         <Flipkey />

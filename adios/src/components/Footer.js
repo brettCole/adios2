@@ -37,7 +37,7 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <Container className='w-100 footer-background'>
+      <Container className='col footer-background'>
         <div className='d-flex col-lg-10 mr-auto ml-auto'>
           <p className='w-50 mt-2'>Subscribe to our newsletter to receive current vacation rental deals and specials</p>
           <InputGroup className='mt-2 w-50'>

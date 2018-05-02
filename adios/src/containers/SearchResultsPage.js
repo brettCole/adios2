@@ -6,6 +6,7 @@ import Search from '../components/Search';
 import Footer from '../components/Footer';
 
 const SearchResultsPage = (props) => {
+  // debugger;
   function splitIt(accommodations) {
     return accommodations.split(" ")
   }

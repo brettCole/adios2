@@ -73,7 +73,7 @@ class Search extends Component {
         <Button className='mb-3 mr-2'>
           {this.state.loading ? (
             <PulseLoader
-              color={'#7ED321'}
+              color={'#17a2b8'}
               loading={this.state.loading}
               size={10}
             >
