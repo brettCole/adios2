@@ -44,8 +44,15 @@ class Search extends Component {
 
   render() {
     return( 
-      <Form onSubmit={this.handleSubmit} className='rounded d-flex justify-content-around align-items-end ml-auto mr-auto w-75'>
-        <Input className='mb-3 ml-2 w-25' type='q' name='q' placeholder='Where do you want to go?'
+      <Form 
+        onSubmit={this.handleSubmit} 
+        className='rounded d-flex justify-content-around align-items-end ml-auto mr-auto'
+      >
+        <Input 
+          className='mb-3 ml-2 w-25' 
+          type='q' 
+          name='q' 
+          placeholder='Where do you want to go?'
           value = {this.state.q}
           onChange = {this.handleInputChange}
         />
@@ -70,10 +77,10 @@ class Search extends Component {
             onChange = {this.handleInputChange}
           />
         </FormGroup>
-        <Button className='mb-3 mr-2'>
+        <Button className='mb-3 mr-2' color='info'>
           {this.state.loading ? (
             <PulseLoader
-              color={'#17a2b8'}
+              color={'#fff'}
               loading={this.state.loading}
               size={10}
             >

@@ -43,7 +43,7 @@ class SignupForm extends Component {
     return (
       <div>
         <Navigation />
-        <Container className='homepage_background_4 w-100 d-flex justify-content-center align-items-center display-height'>
+        <Container className='col homepage_background_4 d-flex justify-content-center align-items-center display-height'>
           <Form
             onSubmit={this.onFormSubmit} className='border border-secondary rounded d-flex justify-content-center flex-column col-lg-4 col-md-6 col-sm-6'
           >

@@ -13,7 +13,7 @@ const CheckListLink = () => {
           outline color='info' 
           className='text-white'
         >
-          <Link to='/checklist' className='text-secondary'>
+          <Link to='/checklist' className='text-white'>
             Create Checklist
           </Link>
         </Button>

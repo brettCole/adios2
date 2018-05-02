@@ -44,29 +44,26 @@ class UserLinkOptions extends React.Component {
               Vacation Checklist
             </NavLink>
           </DropdownItem>
-          <DropdownItem className="text-secondary">
+          <DropdownItem>
             <NavLink
               to='/'
-              className='nav-link'
+              className='nav-link text-secondary'
             >
               Reserved Trips
             </NavLink>
           </DropdownItem>
-          <DropdownItem className="text-secondary">
+          <DropdownItem>
             <NavLink
-              to='/'
-              className="nav-link"
+              to='/account'
+              className="nav-link text-secondary"
             >
               Account
             </NavLink>
           </DropdownItem>
-          <DropdownItem 
-            onClick={this.logout} 
-            className="text-secondary"
-          >
+          <DropdownItem onClick={this.logout}>
             <NavLink
               to='/'
-              className='nav-link'
+              className='nav-link text-secondary'
             >
               Logout
             </NavLink>
