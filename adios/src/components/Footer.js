@@ -61,7 +61,7 @@ class Footer extends React.Component {
             <a href='http://www.acodercalledcole.com'>acodercalledcole.com</a>
           </div>
         </div>
-        <p className='mb-0'>&copy; 2017 Adíos.com, All Rights Reserved &#9760;</p>
+        <p className='mb-0'>&copy; 2017 Adiós.com, All Rights Reserved &#9760;</p>
       </Container>
     )
   }
